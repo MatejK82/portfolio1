@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matej Kocev | Web Developer Portfolio</title>
+  <style>
+    :root {
+      --primary: #181a20;
+      --accent: #4fd1c5;
+      --bg: #101116;
+      --text: #f7fafc;
+      --card: #23242a;
+      --shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background: linear-gradient(120deg, #101116 0%, #23242a 50%, #181a20 100%);
+      background-size: 200% 200%;
+      animation: gradientMove 12s ease-in-out infinite;
+      opacity: 0.7;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.4s, color 0.4s;
+    }
+    header {
+      background: var(--primary);
+      color: var(--text);
+      padding: 2rem 0 3rem 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: background 0.4s, color 0.4s, box-shadow 0.4s;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #b5b8c5;
+    }
+    nav {
+      margin-top: 1.5rem;
+    }
+    nav a {
+      color: #b5b8c5;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      transition: color 0.2s, background 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      transition: background 0.4s, color 0.4s;
+    }
+    section {
+      margin-bottom: 3rem;
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      transition: background 0.4s, color 0.4s, box-shadow 0.4s;
+    }
+    h2 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      transition: color 0.4s;
+    }
+    .skills-list {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .skill {
+      background: #23272f;
+      color: var(--accent);
+      padding: 0.7rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .project-card {
+      background: #181a20;
+      border-radius: 10px;
+      padding: 1.2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    .project-title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+    .project-desc {
+      color: #b5b8c5;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-form input, .contact-form textarea {
+      background: #181a20;
+      color: var(--text);
+      border: 1px solid #35363c;
+      padding: 0.8rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+      transition: background 0.3s, color 0.3s, border 0.3s;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder {
+      color: #7e8494;
+    }
+    .contact-form button {
+      background: var(--accent);
+      color: #181a20;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .contact-form button:hover {
+      background: #38b2ac;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      h2 { font-size: 1.3rem; }
+      section { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;"></canvas>
+  <header>
+    <h1>Matej Kocev</h1>
+    <p>Web Developer | 5 Years Freelance Experience</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm Matej Kocev, a passionate web developer with 5 years of experience building modern, responsive websites and web applications as a freelancer. I love turning ideas into reality using code and am always eager to learn new technologies and improve my skills.</p>
+    </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <div class="skill">HTML5</div>
+        <div class="skill">CSS3</div>
+        <div class="skill">JavaScript (ES6+)</div>
+        <div class="skill">React</div>
+      </div>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <div class="project-title">Project One</div>
+          <div class="project-desc">A modern web application built with React and REST APIs. (Project details coming soon!)</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Project Two</div>
+          <div class="project-desc">Responsive portfolio website for a client, featuring custom animations and interactive UI. (Project details coming soon!)</div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
+        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <div id="formMsg" style="margin-top:0.5rem;font-size:0.95rem;"></div>
+      </form>
+    </section>
+  </main>
+  <script>
+    // Simple contact form handler (no backend, just UI feedback)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formMsg').textContent = 'Thank you for reaching out! I will get back to you soon.';
+      this.reset();
+    });
+
+    // Live animated background (particles)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    function resizeCanvas() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Particle config
+    const PARTICLE_COUNT = 60;
+    const particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
+        r: 1.7 + Math.random() * 1.7
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, w, h);
+      // Draw lines between close particles
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        for (let j = i + 1; j < PARTICLE_COUNT; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110) {
+            ctx.strokeStyle = 'rgba(79,209,197,0.10)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      // Draw particles
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        ctx.beginPath();
+        ctx.arc(particles[i].x, particles[i].y, particles[i].r, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgba(79,209,197,0.22)';
+        ctx.shadowColor = '#4fd1c5';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    function animateParticles() {
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles[i].x += particles[i].vx;
+        particles[i].y += particles[i].vy;
+        if (particles[i].x < 0 || particles[i].x > w) particles[i].vx *= -1;
+        if (particles[i].y < 0 || particles[i].y > h) particles[i].vy *= -1;
+      }
+      drawParticles();
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
+</body>
+</html>
